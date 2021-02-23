@@ -19,13 +19,12 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-
     public Product save(Product product) {
         return productRepository.save(product);
     }
 
-    public Optional<Product> findById(Long Id) {
-        return productRepository.findById(Id);
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
     }
 
     public Iterable<Product> findAll() {
@@ -34,6 +33,10 @@ public class ProductService {
 
     public Iterable<Product> findAllById(Iterable<Long> iterable) {
         return productRepository.findAllById(iterable);
+    }
+
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
     }
 
     public long calculateCount() {

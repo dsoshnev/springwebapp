@@ -3,10 +3,7 @@ package ru.dsoshnev.springwebapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.dsoshnev.springwebapp.model.Product;
 import ru.dsoshnev.springwebapp.service.ProductService;
 
@@ -29,6 +26,12 @@ public class ProductController {
     @PostMapping("/save")
     public String addNewBox(@ModelAttribute Product product) {
         productService.save(product);
+        return "redirect:/products/index";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteBoxById(@PathVariable Long id) {
+        productService.deleteById(id);
         return "redirect:/products/index";
     }
 }
